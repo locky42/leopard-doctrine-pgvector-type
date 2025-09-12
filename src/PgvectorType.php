@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\DoctrinePgvectorType;
+namespace Leopard\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -9,12 +9,12 @@ class PgvectorType extends Type
 {
     public const NAME = 'pgvector';
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return 'vector(' . ($fieldDeclaration['dimension'] ?? 1536) . ')';
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null) {
             return null;
@@ -26,7 +26,7 @@ class PgvectorType extends Type
         return array_map('floatval', explode(',', $value));
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null) {
             return null;
