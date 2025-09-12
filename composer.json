@@ -1,0 +1,14 @@
+{
+    "name": "locky42/leopard-doctrine-pgvector-type",
+    "description": "Doctrine custom type for pgvector",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Leopard\\Doctrine\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.3",
+        "doctrine/dbal": "^4"
+    }
+}
