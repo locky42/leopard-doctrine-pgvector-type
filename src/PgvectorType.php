@@ -31,7 +31,7 @@ class PgvectorType extends Type
         if ($value === null) {
             return null;
         }
-        return '{' . implode(',', $value) . '}';
+        return '[' . implode(',', $value) . ']';
     }
 
     public function getName()
