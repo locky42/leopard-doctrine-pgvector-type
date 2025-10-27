@@ -29,6 +29,12 @@ class ColumnService
         }
 
         $conn = EntityManager::getEntityManager()->getConnection();
+
+        $schemaManager = $conn->createSchemaManager();
+        if (!$schemaManager->tablesExist([$table])) {
+           return null;
+        }
+
         $sql = "SELECT atttypmod
                 FROM pg_attribute
                 WHERE attrelid = '{$table}'::regclass

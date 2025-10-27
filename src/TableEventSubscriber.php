@@ -30,7 +30,7 @@ class TableEventSubscriber implements EventSubscriber
         foreach ($eventArgs->getSchema()->getTables() as $table) {
             foreach ($table->getColumns() as $column) {
                 if (is_a($column->getType(), PgvectorType::class, true)) {
-                    ColumnService::updateColumnSize($table, $column, $eventArgs->getSchema());
+                    ColumnService::updateColumnSize($table, $column);
                 }
             }
         }
