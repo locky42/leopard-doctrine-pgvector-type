@@ -24,35 +24,19 @@ composer require locky42/leopard-doctrine-pgvector-type
 
 ## Usage
 
-1. **Register the custom type** in your Doctrine configuration:
-
-```php
-use Doctrine\DBAL\Types\Type;
-use YourNamespace\Doctrine\Types\VectorType;
-
-Type::addType('vector', VectorType::class);
-```
-
-2. **Update your entity mapping** to use the `vector` type:
+1. **Update your entity mapping** to use the `vector` type:
 
 ```php
 #[ORM\Entity]
 class ExampleEntity
 {
-    #[ORM\Column(type: "vector")]
-    private array $embedding;
+    #[ORM\Column(type: "vector", options: ["dimension" => 1536], nullable: true)]
+    private ?array $embedding = null;
 }
 ```
 
-3. **Run migrations** to apply changes to your database schema.
-
-## Testing
-
-Run the test suite using PHPUnit:
-
-```bash
-vendor/bin/phpunit
-```
+2. **Run migrations** to apply changes to your database schema.
+Use `orm:schema-tool:update` command
 
 ## Contributing
 
@@ -60,8 +44,4 @@ Contributions are welcome! Please submit a pull request or open an issue for dis
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-Special thanks to the PGVector and Doctrine communities for their amazing tools.
+This project is licensed under the [UOS License](LICENSE).
