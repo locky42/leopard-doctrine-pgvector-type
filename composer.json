@@ -2,7 +2,7 @@
     "name": "locky42/leopard-doctrine-pgvector-type",
     "description": "Doctrine custom type for pgvector",
     "type": "library",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "autoload": {
         "psr-4": {
             "Leopard\\Doctrine\\Types\\Pgvector\\": "src/"

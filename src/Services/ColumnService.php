@@ -55,6 +55,8 @@ class ColumnService
         $originalSize = self::getOriginalColumnSize($table, $column);
         if ($originalSize !== null && $originalSize !== $newSize) {
             $conn = EntityManager::getEntityManager()->getConnection();
+            $sql = "UPDATE {$table->getName()} SET {$column->getName()} = NULL;";
+            $conn->executeQuery($sql);
             $sql = "ALTER TABLE {$table->getName()} ALTER COLUMN {$column->getName()} TYPE vector({$newSize})";
             $conn->executeQuery($sql);
             echo "\n\033[32m[PgVector]\033[0m Column " .
